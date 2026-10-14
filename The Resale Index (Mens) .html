@@ -1,0 +1,918 @@
+
+<!-- saved from url=(0098)file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>The Resale Index</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#262922;
+    --ground-raised:#313528;
+    --ground-raised-2:#3a4030;
+    --line:#474d3c;
+    --ink:#ece6d6;
+    --ink-dim:#b7b092;
+    --ink-faint:#8b8468;
+    --brass:#c9a05c;
+    --brass-deep:#9c7c42;
+    --sage:#9ab873;
+    --w-content:1180px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Archivo",Helvetica,Arial,sans-serif;
+    padding-inline:20px;
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  img{display:block;}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:600;margin:0;text-wrap:balance;}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;}
+  .wrap{max-width:var(--w-content);margin:0 auto;}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brass);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding-block:56px 40px;border-bottom:1px solid var(--line);}
+  .hero h1{
+    font-size:clamp(40px,8vw,88px);
+    letter-spacing:-0.01em;
+    line-height:0.95;
+  }
+  .hero h1 em{font-style:italic;color:var(--brass);}
+  .hero-sub{
+    margin-top:14px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+  }
+  .hero-intro{
+    max-width:640px;
+    margin-top:28px;
+    font-size:17px;
+    color:var(--ink-dim);
+  }
+  .hero-intro b{color:var(--ink);font-weight:600;}
+
+  .axes{display:flex;flex-wrap:wrap;gap:28px;margin-top:36px;}
+  .axis{max-width:220px;}
+  .axis .n{font-family:"Fraunces",serif;font-size:26px;color:var(--brass);}
+  .axis .l{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-top:4px;}
+  .axis .d{font-size:13px;color:var(--ink-dim);margin-top:6px;}
+
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:1px;
+    background:var(--line);
+    margin-top:40px;
+    border:1px solid var(--line);
+  }
+  .hero-stats div{background:var(--ground);padding:18px 20px;}
+  .hero-stats .n{font-family:"Fraunces",serif;font-size:30px;color:var(--ink);}
+  .hero-stats .l{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:4px;}
+
+  /* ---------- NAV ---------- */
+  .qnav{display:flex;flex-wrap:wrap;gap:8px;padding-block:18px;border-bottom:1px solid var(--line);}
+  .qnav a{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:7px 13px;
+    border:1px solid var(--line);
+    text-decoration:none;
+    color:var(--ink-dim);
+  }
+  .qnav a:hover,.qnav a:focus-visible{border-color:var(--brass);color:var(--brass);outline:none;}
+
+  /* ---------- MONTH SECTIONS ---------- */
+  .month-section{padding-block:52px;border-bottom:1px solid var(--line);}
+  .month-toggle{border:none;}
+  .month-toggle>summary{cursor:pointer;list-style:none;}
+  .month-toggle>summary::-webkit-details-marker{display:none;}
+  .month-toggle>summary::marker{content:"";}
+  .month-toggle>summary:focus-visible{outline:2px solid var(--brass);outline-offset:6px;}
+  .month-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:16px;margin-bottom:8px;}
+  .month-head h2{font-size:clamp(30px,5vw,46px);}
+  .month-head .count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-faint);}
+  .month-head .chevron{
+    margin-left:auto;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:13px;
+    color:var(--brass);
+    transition:transform .2s ease;
+  }
+  .month-toggle[open] .month-head .chevron{transform:rotate(180deg);}
+  .month-focus{max-width:620px;color:var(--ink-dim);font-size:15px;margin-top:10px;}
+  .month-focus b{color:var(--brass);font-weight:600;}
+  .month-body{margin-top:30px;}
+
+  .brand-row{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:18px 22px;
+    padding-block:26px;
+    border-top:1px solid var(--line);
+  }
+  .brand-row:last-child{border-bottom:1px solid var(--line);}
+  .rank{
+    font-family:"Fraunces",serif;
+    font-size:30px;
+    color:var(--brass-deep);
+    line-height:1;
+  }
+  .brand-meta{min-width:0;}
+  .brand-name{font-size:23px;}
+  .stat-line{
+    display:flex;flex-wrap:wrap;gap:4px 18px;
+    margin-top:8px;
+    font-family:"IBM Plex Mono",monospace;
+    font-size:12.5px;
+  }
+  .stat-line small{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-left:4px;}
+  .stat-yoy{color:var(--sage);}
+  .stat-gap{color:var(--brass);}
+  .blurb{max-width:560px;font-size:14.5px;color:var(--ink-dim);margin-top:12px;}
+
+  .item-strip{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;grid-column:1 / -1;}
+  .item-card{
+    width:112px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  .item-photo{
+    width:112px;height:112px;
+    border:1px solid var(--line);
+    overflow:hidden;
+    background:var(--ground-raised);
+  }
+  .item-photo img{width:100%;height:100%;object-fit:cover;}
+  .item-name{
+    font-size:11.5px;
+    color:var(--ink-dim);
+    line-height:1.3;
+  }
+  .ref-link{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:8.5px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+  .ref-link:hover,.ref-link:focus-visible{color:var(--brass);outline:none;}
+
+  /* ---------- SPOTLIGHT ---------- */
+  .spot-section{padding-block:56px;border-bottom:1px solid var(--line);}
+  .spot-section > .eyebrow{display:block;margin-bottom:10px;}
+  .spot-section h2{font-size:clamp(28px,5vw,42px);max-width:680px;margin-bottom:44px;}
+  .spotlight{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+    padding-block:40px;
+    border-top:1px solid var(--line);
+  }
+  .spotlight:nth-of-type(even){grid-template-columns:1fr 1fr;}
+  .spotlight:nth-of-type(even) .spot-media{order:2;}
+  .spot-media{
+    aspect-ratio:4/5;
+    background:var(--ground-raised);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .spot-media img{width:100%;height:100%;object-fit:cover;}
+  .spot-copy .brand-name{font-size:clamp(26px,4vw,36px);}
+  .spot-copy .stat-line{margin-top:10px;}
+  .spot-copy p{font-size:15px;color:var(--ink-dim);margin-top:14px;max-width:460px;}
+  .stat-callout{
+    margin-top:22px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-family:"Fraunces",serif;
+    font-size:clamp(17px,2.4vw,21px);
+    line-height:1.3;
+    max-width:440px;
+  }
+  .stat-callout b{color:var(--brass);font-style:italic;}
+
+  /* ---------- PRIORITIES ---------- */
+  .priorities{padding-block:56px;border-bottom:1px solid var(--line);}
+  .priorities h2{font-size:clamp(28px,5vw,42px);margin-bottom:38px;max-width:680px;}
+  .pcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);}
+  .pcard{background:var(--ground);padding:28px 26px;display:flex;flex-direction:column;gap:14px;}
+  .pcard .m{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);}
+  .pcard h3{font-size:21px;}
+  .pcard p{font-size:14px;color:var(--ink-dim);}
+  .pcard p i{color:var(--ink);font-style:italic;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding-block:48px 64px;}
+  .colophon{font-size:12px;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;}
+
+  @media (max-width:640px){
+    .brand-row{grid-template-columns:40px 1fr;}
+    .rank{font-size:22px;}
+    .spotlight,.spotlight:nth-of-type(even){grid-template-columns:1fr;}
+    .spotlight:nth-of-type(even) .spot-media{order:0;}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="stylesheet" href="./The Resale Index (Mens) _files/css2">
+
+</head><body><section class="wrap hero">
+  <h1>The Resale<br><em>Index.</em></h1>
+  <div class="hero-sub">Q4 2026 — Men's Luxury — October through December</div>
+  <p class="hero-intro">Every quarter we rank the brands and items worth sourcing against two signals pulled from eBay listing and search data: how fast a brand's resale activity is accelerating, and how far current supply is lagging buyer demand. What follows is that ranking for the fall and winter selling season — <b>18 brands, 54 items, three sourcing windows.</b></p>
+
+  <div class="axes">
+    <div class="axis"><div class="n">01</div><div class="l">Velocity</div><div class="d">Year-over-year growth — whether resale activity is accelerating or stalling.</div></div>
+    <div class="axis"><div class="n">02</div><div class="l">Gap</div><div class="d">Supply-gap percentage points — search demand outrunning what's actually listed.</div></div>
+  </div>
+
+  <div class="hero-stats">
+    <div><div class="n mono">18</div><div class="l">Brands tracked across the index</div></div>
+    <div><div class="n mono">+131pp</div><div class="l">Widest gap — Iron Heart, October</div></div>
+    <div><div class="n mono">+130.7%</div><div class="l">Fastest YoY growth — Supreme, November</div></div>
+  </div>
+</section>
+
+<nav class="wrap qnav">
+  <a href="file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html#october">October</a>
+  <a href="file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html#november">November</a>
+  <a href="file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html#december">December</a>
+  <a href="file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html#movers">Brands moving fast</a>
+  <a href="file:///Users/kmansukhani/Desktop/Claude/Top%20Items%20Sold%20-%20Supply/resale_index_q4_mens.html#priorities">Sourcing priorities</a>
+</nav>
+
+<!-- ============ OCTOBER ============ -->
+<section class="wrap month-section" id="october">
+  <details class="month-toggle">
+    <summary>
+      <div class="month-head"><h2>October</h2><span class="count mono">8 brands ranked</span><span class="chevron mono">▾</span></div>
+      <p class="month-focus">Seasonal focus: <b>transitional jackets, heritage styles, heavyweight fabrics, premium denim</b> and fall layering.</p>
+    </summary>
+    <div class="month-body">
+
+      <article class="brand-row">
+        <div class="rank">01</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Polo Ralph Lauren</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +67.0%<small>YoY</small></span>
+            <span class="stat-gap">+24.7pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Large, growing outerwear business; heritage styles and premium knits align with fall demand.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M001.avif" alt="Vintage leather bomber jacket" loading="lazy"></div>
+            <span class="item-name">Vintage leather bomber jacket</span>
+            <a class="ref-link" data-q="Polo Ralph Lauren vintage leather bomber jacket" href="https://www.google.com/search?tbm=isch&amp;q=Polo%20Ralph%20Lauren%20vintage%20leather%20bomber%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M002.avif" alt="Wool/cashmere overcoat" loading="lazy"></div>
+            <span class="item-name">Wool/cashmere overcoat</span>
+            <a class="ref-link" data-q="Polo Ralph Lauren wool cashmere overcoat" href="https://www.google.com/search?tbm=isch&amp;q=Polo%20Ralph%20Lauren%20wool%20cashmere%20overcoat%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M003.png" alt="Rare Polo Bear sweater" loading="lazy"></div>
+            <span class="item-name">Rare Polo Bear sweater</span>
+            <a class="ref-link" data-q="Polo Ralph Lauren Polo Bear sweater" href="https://www.google.com/search?tbm=isch&amp;q=Polo%20Ralph%20Lauren%20Polo%20Bear%20sweater%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">02</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Barbour</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +95.9%<small>YoY</small></span>
+            <span class="stat-gap">+81.9pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Strong outerwear opportunity, supported by rising eBay searches for Bedale and Beaufort jackets. Prioritize premium variants above $250.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M004.png" alt="Bedale wax jacket" loading="lazy"></div>
+            <span class="item-name">Bedale wax jacket</span>
+            <a class="ref-link" data-q="Barbour Bedale wax jacket" href="https://www.google.com/search?tbm=isch&amp;q=Barbour%20Bedale%20wax%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M005.webp" alt="Beaufort wax jacket" loading="lazy"></div>
+            <span class="item-name">Beaufort wax jacket</span>
+            <a class="ref-link" data-q="Barbour Beaufort wax jacket" href="https://www.google.com/search?tbm=isch&amp;q=Barbour%20Beaufort%20wax%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M006.jpg" alt="Transport wax jacket" loading="lazy"></div>
+            <span class="item-name">Transport wax jacket</span>
+            <a class="ref-link" data-q="Barbour Transport wax jacket" href="https://www.google.com/search?tbm=isch&amp;q=Barbour%20Transport%20wax%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">03</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Burberry</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +11.1%<small>YoY</small></span>
+            <span class="stat-gap">+48.4pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Heritage outerwear and trench coats; positive onsite search momentum for Burberry trenches.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M007.webp" alt="Heritage/Kensington trench coat" loading="lazy"></div>
+            <span class="item-name">Heritage/Kensington trench coat</span>
+            <a class="ref-link" data-q="Burberry Heritage Kensington trench coat" href="https://www.google.com/search?tbm=isch&amp;q=Burberry%20Heritage%20Kensington%20trench%20coat%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M008.webp" alt="Wool/cashmere overcoat" loading="lazy"></div>
+            <span class="item-name">Wool/cashmere overcoat</span>
+            <a class="ref-link" data-q="Burberry wool cashmere overcoat" href="https://www.google.com/search?tbm=isch&amp;q=Burberry%20wool%20cashmere%20overcoat%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M009.webp" alt="Vintage check-lined Harrington" loading="lazy"></div>
+            <span class="item-name">Vintage check-lined Harrington</span>
+            <a class="ref-link" data-q="Burberry vintage check lined Harrington jacket" href="https://www.google.com/search?tbm=isch&amp;q=Burberry%20vintage%20check%20lined%20Harrington%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">04</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Iron Heart</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +115.7%<small>YoY</small></span>
+            <span class="stat-gap">+131pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Exceptional outerwear growth, with strong additional search signals for heavyweight flannels and jackets.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M010.png" alt="Ultra Heavy Flannel shirt" loading="lazy"></div>
+            <span class="item-name">Ultra Heavy Flannel shirt</span>
+            <a class="ref-link" data-q="Iron Heart Ultra Heavy Flannel shirt" href="https://www.google.com/search?tbm=isch&amp;q=Iron%20Heart%20Ultra%20Heavy%20Flannel%20shirt%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M011.jpeg" alt="IH-526J Type III denim jacket" loading="lazy"></div>
+            <span class="item-name">IH-526J Type III denim jacket</span>
+            <a class="ref-link" data-q="Iron Heart IH-526J Type III denim jacket" href="https://www.google.com/search?tbm=isch&amp;q=Iron%20Heart%20IH-526J%20Type%20III%20denim%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M012.webp" alt="IH-634S heavyweight jeans" loading="lazy"></div>
+            <span class="item-name">IH-634S heavyweight jeans</span>
+            <a class="ref-link" data-q="Iron Heart IH-634S heavyweight jeans" href="https://www.google.com/search?tbm=isch&amp;q=Iron%20Heart%20IH-634S%20heavyweight%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">05</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Stone Island</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +29.6%<small>YoY</small></span>
+            <span class="stat-gap">+76.2pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Technical and collectible archive outerwear; Marina-related searches are increasing.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M013.avif" alt="David-TC technical jacket" loading="lazy"></div>
+            <span class="item-name">David-TC technical jacket</span>
+            <a class="ref-link" data-q="Stone Island David-TC technical jacket" href="https://www.google.com/search?tbm=isch&amp;q=Stone%20Island%20David-TC%20technical%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M014.avif" alt="Crinkle Reps NY padded jacket" loading="lazy"></div>
+            <span class="item-name">Crinkle Reps NY padded jacket</span>
+            <a class="ref-link" data-q="Stone Island Crinkle Reps NY padded jacket" href="https://www.google.com/search?tbm=isch&amp;q=Stone%20Island%20Crinkle%20Reps%20NY%20padded%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M015.jpeg" alt="Archive Marina jacket" loading="lazy"></div>
+            <span class="item-name">Archive Marina jacket</span>
+            <a class="ref-link" data-q="Stone Island archive Marina jacket" href="https://www.google.com/search?tbm=isch&amp;q=Stone%20Island%20archive%20Marina%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">06</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Ermenegildo Zegna</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +67.5%<small>YoY</small></span>
+            <span class="stat-gap">+70pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Premium materials and luxury transitional outerwear, supported by broader fall interest in suede and field jackets.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M016.avif" alt="Oasi cashmere coat" loading="lazy"></div>
+            <span class="item-name">Oasi cashmere coat</span>
+            <a class="ref-link" data-q="Ermenegildo Zegna Oasi cashmere coat" href="https://www.google.com/search?tbm=isch&amp;q=Ermenegildo%20Zegna%20Oasi%20cashmere%20coat%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M017.avif" alt="Suede bomber" loading="lazy"></div>
+            <span class="item-name">Suede bomber</span>
+            <a class="ref-link" data-q="Ermenegildo Zegna suede bomber jacket" href="https://www.google.com/search?tbm=isch&amp;q=Ermenegildo%20Zegna%20suede%20bomber%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M018.jpeg" alt="Technical field jacket" loading="lazy"></div>
+            <span class="item-name">Technical field jacket</span>
+            <a class="ref-link" data-q="Ermenegildo Zegna technical field jacket" href="https://www.google.com/search?tbm=isch&amp;q=Ermenegildo%20Zegna%20technical%20field%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">07</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Samurai Jeans</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +113.4%<small>YoY</small></span>
+            <span class="stat-gap">+79.5pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Emerging heavyweight Japanese denim opportunity, supported by increasing onsite searches.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M019.webp" alt="S510XX heavyweight jeans" loading="lazy"></div>
+            <span class="item-name">S510XX heavyweight jeans</span>
+            <a class="ref-link" data-q="Samurai Jeans S510XX heavyweight jeans" href="https://www.google.com/search?tbm=isch&amp;q=Samurai%20Jeans%20S510XX%20heavyweight%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M020.webp" alt="S710XX 19oz jeans" loading="lazy"></div>
+            <span class="item-name">S710XX 19oz jeans</span>
+            <a class="ref-link" data-q="Samurai Jeans S710XX 19oz jeans" href="https://www.google.com/search?tbm=isch&amp;q=Samurai%20Jeans%20S710XX%2019oz%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M021.webp" alt="S5000VX heavyweight jeans" loading="lazy"></div>
+            <span class="item-name">S5000VX heavyweight jeans</span>
+            <a class="ref-link" data-q="Samurai Jeans S5000VX heavyweight jeans" href="https://www.google.com/search?tbm=isch&amp;q=Samurai%20Jeans%20S5000VX%20heavyweight%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">08</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Amiri</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +56.7%<small>YoY</small></span>
+            <span class="stat-gap">+26.5pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Premium denim opportunity, although declining keyword searches warrant model-level validation before broad sourcing.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M022.webp" alt="MX1 jeans" loading="lazy"></div>
+            <span class="item-name">MX1 jeans</span>
+            <a class="ref-link" data-q="Amiri MX1 jeans" href="https://www.google.com/search?tbm=isch&amp;q=Amiri%20MX1%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M023.avif" alt="Stacked skinny jeans" loading="lazy"></div>
+            <span class="item-name">Stacked skinny jeans</span>
+            <a class="ref-link" data-q="Amiri stacked skinny jeans" href="https://www.google.com/search?tbm=isch&amp;q=Amiri%20stacked%20skinny%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M024.webp" alt="Embellished/patchwork denim" loading="lazy"></div>
+            <span class="item-name">Embellished/patchwork denim</span>
+            <a class="ref-link" data-q="Amiri embellished patchwork denim jeans" href="https://www.google.com/search?tbm=isch&amp;q=Amiri%20embellished%20patchwork%20denim%20jeans%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ NOVEMBER ============ -->
+<section class="wrap month-section" id="november">
+  <details class="month-toggle">
+    <summary>
+      <div class="month-head"><h2>November</h2><span class="count mono">7 brands ranked</span><span class="chevron mono">▾</span></div>
+      <p class="month-focus">Seasonal focus: <b>premium winter jackets, puffers, technical shells, cashmere</b>, collectible streetwear and giftable luxury pieces.</p>
+    </summary>
+    <div class="month-body">
+
+      <article class="brand-row">
+        <div class="rank">01</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Arc'teryx</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +94.9%<small>YoY</small></span>
+            <span class="stat-gap">+27.0pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Largest selected brand opportunity; technical winter outerwear with strong internal sales and search momentum.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/Beta-AR-Jacket-Fluidity-Vitality.jpg" alt="Beta AR GORE-TEX jacket" loading="lazy"></div>
+            <span class="item-name">Beta AR GORE-TEX jacket</span>
+            <a class="ref-link" data-q="Arc'teryx Beta AR GORE-TEX jacket" href="https://www.google.com/search?tbm=isch&amp;q=Arc%27teryx%20Beta%20AR%20GORE-TEX%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M026.avif" alt="Alpha SV jacket" loading="lazy"></div>
+            <span class="item-name">Alpha SV jacket</span>
+            <a class="ref-link" data-q="Arc'teryx Alpha SV jacket" href="https://www.google.com/search?tbm=isch&amp;q=Arc%27teryx%20Alpha%20SV%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M027.jpeg" alt="Arc'teryx × BEAMS limited-edition shells" loading="lazy"></div>
+            <span class="item-name">Arc'teryx × BEAMS limited-edition shells</span>
+            <a class="ref-link" data-q="Arc'teryx BEAMS limited edition shell jacket" href="https://www.google.com/search?tbm=isch&amp;q=Arc%27teryx%20BEAMS%20limited%20edition%20shell%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">02</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Canada Goose</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +40.2%<small>YoY</small></span>
+            <span class="stat-gap">+21.7pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Established luxury winter parkas with clear November–December seasonal relevance.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M028.jpeg" alt="Wyndham Parka" loading="lazy"></div>
+            <span class="item-name">Wyndham Parka</span>
+            <a class="ref-link" data-q="Canada Goose Wyndham Parka" href="https://www.google.com/search?tbm=isch&amp;q=Canada%20Goose%20Wyndham%20Parka%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M029.webp" alt="Langford Parka" loading="lazy"></div>
+            <span class="item-name">Langford Parka</span>
+            <a class="ref-link" data-q="Canada Goose Langford Parka" href="https://www.google.com/search?tbm=isch&amp;q=Canada%20Goose%20Langford%20Parka%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M030.webp" alt="Expedition Parka" loading="lazy"></div>
+            <span class="item-name">Expedition Parka</span>
+            <a class="ref-link" data-q="Canada Goose Expedition Parka" href="https://www.google.com/search?tbm=isch&amp;q=Canada%20Goose%20Expedition%20Parka%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">03</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Moncler</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +18.7%<small>YoY</small></span>
+            <span class="stat-gap">+35.8pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Luxury down jackets and ski apparel. Fall 2026 archive-focused releases add a timely reason to investigate vintage Moncler pieces.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/96686866.jpeg" alt="Maya puffer jacket" loading="lazy"></div>
+            <span class="item-name">Maya puffer jacket</span>
+            <a class="ref-link" data-q="Moncler Maya puffer jacket" href="https://www.google.com/search?tbm=isch&amp;q=Moncler%20Maya%20puffer%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M032.jpeg" alt="Vintage Karakorum jacket" loading="lazy"></div>
+            <span class="item-name">Vintage Karakorum jacket</span>
+            <a class="ref-link" data-q="Moncler vintage Karakorum jacket" href="https://www.google.com/search?tbm=isch&amp;q=Moncler%20vintage%20Karakorum%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M033.avif" alt="Moncler Grenoble ski jacket" loading="lazy"></div>
+            <span class="item-name">Moncler Grenoble ski jacket</span>
+            <a class="ref-link" data-q="Moncler Grenoble ski jacket" href="https://www.google.com/search?tbm=isch&amp;q=Moncler%20Grenoble%20ski%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">04</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Supreme</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +130.7%<small>YoY</small></span>
+            <span class="stat-gap">+83.1pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Strong activewear growth; recognizable streetwear pieces are relevant to holiday gifting.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M034.webp" alt="Box Logo hoodie" loading="lazy"></div>
+            <span class="item-name">Box Logo hoodie</span>
+            <a class="ref-link" data-q="Supreme Box Logo hoodie" href="https://www.google.com/search?tbm=isch&amp;q=Supreme%20Box%20Logo%20hoodie%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M035.webp" alt="Box Logo crewneck" loading="lazy"></div>
+            <span class="item-name">Box Logo crewneck</span>
+            <a class="ref-link" data-q="Supreme Box Logo crewneck" href="https://www.google.com/search?tbm=isch&amp;q=Supreme%20Box%20Logo%20crewneck%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M036.jpeg" alt="Supreme × Nike track jacket" loading="lazy"></div>
+            <span class="item-name">Supreme × Nike track jacket</span>
+            <a class="ref-link" data-q="Supreme Nike track jacket" href="https://www.google.com/search?tbm=isch&amp;q=Supreme%20Nike%20track%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">05</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">The North Face</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +92.4%<small>YoY</small></span>
+            <span class="stat-gap">+103.1pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Strong outerwear growth, but focus on archive and limited-edition pieces that can meet the $250+ resale threshold.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M037.avif" alt="Rare Steep Tech jacket" loading="lazy"></div>
+            <span class="item-name">Rare Steep Tech jacket</span>
+            <a class="ref-link" data-q="The North Face Steep Tech jacket" href="https://www.google.com/search?tbm=isch&amp;q=The%20North%20Face%20Steep%20Tech%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M038.png" alt="Archive Mountain Light GORE-TEX jacket" loading="lazy"></div>
+            <span class="item-name">Archive Mountain Light GORE-TEX jacket</span>
+            <a class="ref-link" data-q="The North Face archive Mountain Light GORE-TEX jacket" href="https://www.google.com/search?tbm=isch&amp;q=The%20North%20Face%20archive%20Mountain%20Light%20GORE-TEX%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M039.png" alt="Limited-edition/collaboration Nuptse" loading="lazy"></div>
+            <span class="item-name">Limited-edition/collaboration Nuptse</span>
+            <a class="ref-link" data-q="The North Face collaboration Nuptse jacket" href="https://www.google.com/search?tbm=isch&amp;q=The%20North%20Face%20collaboration%20Nuptse%20jacket%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">06</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Brunello Cucinelli</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +46.7%<small>YoY</small></span>
+            <span class="stat-gap">+22.4pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Luxury knitwear opportunity, supported by seasonal interest in cashmere, textured knits and cardigans.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M040.webp" alt="Cashmere crewneck sweater" loading="lazy"></div>
+            <span class="item-name">Cashmere crewneck sweater</span>
+            <a class="ref-link" data-q="Brunello Cucinelli cashmere crewneck sweater" href="https://www.google.com/search?tbm=isch&amp;q=Brunello%20Cucinelli%20cashmere%20crewneck%20sweater%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M041.webp" alt="Cashmere zip cardigan" loading="lazy"></div>
+            <span class="item-name">Cashmere zip cardigan</span>
+            <a class="ref-link" data-q="Brunello Cucinelli cashmere zip cardigan" href="https://www.google.com/search?tbm=isch&amp;q=Brunello%20Cucinelli%20cashmere%20zip%20cardigan%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M042.webp" alt="Cable-knit cashmere/wool sweater" loading="lazy"></div>
+            <span class="item-name">Cable-knit cashmere/wool sweater</span>
+            <a class="ref-link" data-q="Brunello Cucinelli cable knit cashmere wool sweater" href="https://www.google.com/search?tbm=isch&amp;q=Brunello%20Cucinelli%20cable%20knit%20cashmere%20wool%20sweater%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">07</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Chrome Hearts</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +64.8%<small>YoY</small></span>
+            <span class="stat-gap">+47.3pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Collectible luxury streetwear with strong onsite search momentum for long-sleeve graphic shirts.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M043.webp" alt="Cemetery Cross long-sleeve T-shirt" loading="lazy"></div>
+            <span class="item-name">Cemetery Cross long-sleeve T-shirt</span>
+            <a class="ref-link" data-q="Chrome Hearts Cemetery Cross long sleeve shirt" href="https://www.google.com/search?tbm=isch&amp;q=Chrome%20Hearts%20Cemetery%20Cross%20long%20sleeve%20shirt%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M044.jpeg" alt="Floral Cross long-sleeve T-shirt" loading="lazy"></div>
+            <span class="item-name">Floral Cross long-sleeve T-shirt</span>
+            <a class="ref-link" data-q="Chrome Hearts Floral Cross long sleeve shirt" href="https://www.google.com/search?tbm=isch&amp;q=Chrome%20Hearts%20Floral%20Cross%20long%20sleeve%20shirt%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M045.webp" alt="Matty Boy hoodie" loading="lazy"></div>
+            <span class="item-name">Matty Boy hoodie</span>
+            <a class="ref-link" data-q="Chrome Hearts Matty Boy hoodie" href="https://www.google.com/search?tbm=isch&amp;q=Chrome%20Hearts%20Matty%20Boy%20hoodie%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ DECEMBER ============ -->
+<section class="wrap month-section" id="december">
+  <details class="month-toggle">
+    <summary>
+      <div class="month-head"><h2>December</h2><span class="count mono">3 brands ranked</span><span class="chevron mono">▾</span></div>
+      <p class="month-focus">Seasonal focus: <b>premium suiting, tailored jackets, elevated winter dressing</b> and luxury occasionwear.</p>
+    </summary>
+    <div class="month-body">
+
+      <article class="brand-row">
+        <div class="rank">01</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Kiton</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +89.1%<small>YoY</small></span>
+            <span class="stat-gap">+42.7pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Strong internal growth in luxury suiting; a targeted opportunity for holiday and formal dressing.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/nm_4297131_100380_m" alt="Wool two-piece suit" loading="lazy"></div>
+            <span class="item-name">Wool two-piece suit</span>
+            <a class="ref-link" data-q="Kiton wool two piece suit" href="https://www.google.com/search?tbm=isch&amp;q=Kiton%20wool%20two%20piece%20suit%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M047.jpg" alt="Double-breasted wool suit" loading="lazy"></div>
+            <span class="item-name">Double-breasted wool suit</span>
+            <a class="ref-link" data-q="Kiton double breasted wool suit" href="https://www.google.com/search?tbm=isch&amp;q=Kiton%20double%20breasted%20wool%20suit%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M048.avif" alt="Cashmere/wool sportcoat" loading="lazy"></div>
+            <span class="item-name">Cashmere/wool sportcoat</span>
+            <a class="ref-link" data-q="Kiton cashmere wool sportcoat" href="https://www.google.com/search?tbm=isch&amp;q=Kiton%20cashmere%20wool%20sportcoat%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">02</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Ralph Lauren Purple Label</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +50.7%<small>YoY</small></span>
+            <span class="stat-gap">+9.7pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Premium tailoring and cashmere, with appeal across holiday occasions and luxury gifting.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M049.webp" alt="Premium wool two-piece suit" loading="lazy"></div>
+            <span class="item-name">Premium wool two-piece suit</span>
+            <a class="ref-link" data-q="Ralph Lauren Purple Label wool two piece suit" href="https://www.google.com/search?tbm=isch&amp;q=Ralph%20Lauren%20Purple%20Label%20wool%20two%20piece%20suit%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M050.webp" alt="Double-breasted blazer" loading="lazy"></div>
+            <span class="item-name">Double-breasted blazer</span>
+            <a class="ref-link" data-q="Ralph Lauren Purple Label double breasted blazer" href="https://www.google.com/search?tbm=isch&amp;q=Ralph%20Lauren%20Purple%20Label%20double%20breasted%20blazer%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M051.webp" alt="Cashmere/Polo Bear sweater" loading="lazy"></div>
+            <span class="item-name">Cashmere/Polo Bear sweater</span>
+            <a class="ref-link" data-q="Ralph Lauren Purple Label cashmere Polo Bear sweater" href="https://www.google.com/search?tbm=isch&amp;q=Ralph%20Lauren%20Purple%20Label%20cashmere%20Polo%20Bear%20sweater%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="brand-row">
+        <div class="rank">03</div>
+        <div class="brand-meta">
+          <h3 class="brand-name">Brooks Brothers</h3>
+          <div class="stat-line">
+            <span class="stat-yoy">▲ +56.9%<small>YoY</small></span>
+            <span class="stat-gap">+39.5pp<small>supply gap</small></span>
+          </div>
+          <p class="blurb">Heritage tailoring opportunity. Focus on premium collections and pieces with established resale value above $250.</p>
+        </div>
+        <div class="item-strip">
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M052.jpg" alt="Golden Fleece suit" loading="lazy"></div>
+            <span class="item-name">Golden Fleece suit</span>
+            <a class="ref-link" data-q="Brooks Brothers Golden Fleece suit" href="https://www.google.com/search?tbm=isch&amp;q=Brooks%20Brothers%20Golden%20Fleece%20suit%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M053.avif" alt="Premium 1818 wool suit" loading="lazy"></div>
+            <span class="item-name">Premium 1818 wool suit</span>
+            <a class="ref-link" data-q="Brooks Brothers premium 1818 wool suit" href="https://www.google.com/search?tbm=isch&amp;q=Brooks%20Brothers%20premium%201818%20wool%20suit%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+          <div class="item-card">
+            <div class="item-photo"><img src="./The Resale Index (Mens) _files/M054.avif" alt="Black Fleece tailored blazer" loading="lazy"></div>
+            <span class="item-name">Black Fleece tailored blazer</span>
+            <a class="ref-link" data-q="Brooks Brothers Black Fleece tailored blazer" href="https://www.google.com/search?tbm=isch&amp;q=Brooks%20Brothers%20Black%20Fleece%20tailored%20blazer%20mens%20authentic%20product%20photo%20clothing%20front" target="_blank" rel="noopener">more references ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ BRANDS MOVING FAST ============ -->
+<section class="wrap spot-section" id="movers">
+  <span class="eyebrow">Brands moving fast</span>
+  <h2>Four brands whose numbers justify the attention this quarter.</h2>
+
+  <div class="spotlight">
+    <div class="spot-media">
+      <img src="./The Resale Index (Mens) _files/M011.jpeg" alt="Iron Heart IH-526J Type III denim jacket" loading="lazy">
+    </div>
+    <div class="spot-copy">
+      <h3 class="brand-name">Iron Heart</h3>
+      <div class="stat-line">
+        <span class="stat-yoy">▲ +115.7%<small>YoY</small></span>
+        <span class="stat-gap">+131pp<small>supply gap</small></span>
+      </div>
+      <p>A small, fast-growing line of Japanese heavyweight denim and flannel. Search momentum for the Ultra Heavy Flannel and the IH-526J jacket is outrunning available listings by a wider margin than any other brand in this index.</p>
+      <div class="stat-callout">A <b>+131 percentage-point</b> supply gap — the widest of any brand tracked this quarter — on heavyweight Japanese denim and flannel.</div>
+    </div>
+  </div>
+
+  <div class="spotlight">
+    <div class="spot-media">
+      <img src="./The Resale Index (Mens) _files/Beta-AR-Jacket-Fluidity-Vitality.jpg" alt="Arc'teryx Beta AR jacket" loading="lazy">
+    </div>
+    <div class="spot-copy">
+      <h3 class="brand-name">Arc'teryx</h3>
+      <div class="stat-line">
+        <span class="stat-yoy">▲ +94.9%<small>YoY</small></span>
+        <span class="stat-gap">+27.0pp<small>supply gap</small></span>
+      </div>
+      <p>Technical winter outerwear with the strongest combined growth and gap profile of any brand across all three months. The Beta AR and Alpha SV lead demand, and BEAMS collaboration shells carry outsized search interest relative to how rarely they list.</p>
+      <div class="stat-callout"><b>+94.9% YoY growth</b> on a +27.0 percentage-point gap — the single largest brand opportunity in the entire November cohort.</div>
+    </div>
+  </div>
+
+  <div class="spotlight">
+    <div class="spot-media">
+      <img src="./The Resale Index (Mens) _files/96686866.jpeg" alt="Moncler Maya puffer jacket" loading="lazy">
+    </div>
+    <div class="spot-copy">
+      <h3 class="brand-name">Moncler</h3>
+      <div class="stat-line">
+        <span class="stat-yoy">▲ +18.7%<small>YoY</small></span>
+        <span class="stat-gap">+35.8pp<small>supply gap</small></span>
+      </div>
+      <p>Growth here is the slowest of the November cohort, but the gap is still wide — and Fall 2026 archive-focused releases are pulling renewed attention toward vintage Karakorum and Grenoble ski pieces specifically.</p>
+      <div class="stat-callout">A <b>+35.8 percentage-point</b> gap on a brand growing at a fifth the rate of its peers — the opportunity here is archive-specific, not broad-based.</div>
+    </div>
+  </div>
+
+  <div class="spotlight">
+    <div class="spot-media">
+      <img src="./The Resale Index (Mens) _files/nm_4297131_100380_m" alt="Kiton wool two-piece suit" loading="lazy">
+    </div>
+    <div class="spot-copy">
+      <h3 class="brand-name">Kiton</h3>
+      <div class="stat-line">
+        <span class="stat-yoy">▲ +89.1%<small>YoY</small></span>
+        <span class="stat-gap">+42.7pp<small>supply gap</small></span>
+      </div>
+      <p>The smallest brand carried into December, and the fastest-growing one in its cohort. Holiday and formal-occasion demand is pulling hard on two-piece wool suiting specifically.</p>
+      <div class="stat-callout"><b>+89.1% YoY growth</b> on a +42.7 percentage-point gap — Kiton is the smallest brand in this index growing the fastest.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOURCING PRIORITIES ============ -->
+<section class="wrap priorities" id="priorities">
+  <h2>Sourcing priorities, month by month.</h2>
+  <div class="pcards">
+    <div class="pcard">
+      <span class="m">October — build the fall assortment</span>
+      <h3>Source now</h3>
+      <p><i>"Prioritize Polo Ralph Lauren, Barbour, Iron Heart and Stone Island, with selective Burberry and Zegna inventory."</i></p>
+    </div>
+    <div class="pcard">
+      <span class="m">November — scale winter and gifting</span>
+      <h3>Highest commercial emphasis</h3>
+      <p><i>"Lead with Arc'teryx, Canada Goose, Moncler, Supreme, Brunello Cucinelli and Chrome Hearts. Inventory should ideally be live ahead of the November demand window."</i></p>
+    </div>
+    <div class="pcard">
+      <span class="m">December — capture occasion demand</span>
+      <h3>Tailoring, plus continuity</h3>
+      <p><i>"Focus on Kiton and Ralph Lauren Purple Label for tailoring, while continuing to merchandise luxury puffers, technical jackets and cashmere from the November list."</i></p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="colophon">THE RESALE INDEX — Q4 2026 — MEN'S LUXURY — COMPILED FROM INTERNAL YOY AND ONSITE SEARCH DATA</div>
+</footer>
+
+<script>
+  document.querySelectorAll('a.ref-link[data-q]').forEach(function(a){
+    var q = encodeURIComponent(a.dataset.q + ' mens authentic product photo clothing front');
+    a.href = 'https://www.google.com/search?tbm=isch&q=' + q;
+  });
+</script>
+</body></html>
